@@ -15,7 +15,7 @@ hist_bytes = defaultdict(list)
 
 while True:
 	try:
-		# r = requests.get("http://localhost:50030/jobtracker.jsp")
+		r = requests.get("http://localhost:50030/jobtracker.jsp")
 		p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE,stdin=subprocess.PIPE, shell=True)
 		out, err = p.communicate()
 		out = out.split("\n")[3:]
