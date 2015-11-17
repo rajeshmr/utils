@@ -5,9 +5,9 @@ from collections import defaultdict
 import time
 import requests 
 import json
+import sys
 
-print "enter process id:"
-process_id = raw_input()
+process_id = sys.argv[1]
 process_id = process_id.strip()
 cmd = ['jmap -histo %s | head -20' % process_id]
 hist_instance = defaultdict(list)
@@ -28,11 +28,11 @@ while True:
 		print "sleeping for 10 sec"
 		time.sleep(10)
 	except:
-		print "bytes"
+		print "-" * 30 ,"bytes", "-" * 30
 		for k, v in hist_bytes.iteritems():
 			print "%s\t%s" % (k, "\t".join(v))
 		print 
-		print "instance"	
+		print "-" * 30, "instance", "-" * 30
 		for k, v in hist_instance.iteritems():
 			print "%s\t%s" % (k, "\t".join(v))
 		break
